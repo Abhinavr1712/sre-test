@@ -1,16 +1,14 @@
-# SRE/DevOps Online Assessment
+I created the EC2 instance and instald git, python3, pip3 and docker
 
-(v1.0) The purpose of this test is to evaluate experience using Docker to containerize applications, and deploying such applications on AWS.
+Created dockerfile which uses python3 and pip3 and imported the flask package and executed the python code using entrypoint
 
-This application (app.py) is a simple **Flask 1.1.1** server for **Python 3.7.5**. Once deployed, this Flask web application should be exposed on **port 80**. *You must not modify app.py.*
+Environment variable is passed while creating the container usin --env flag
 
-Your task is to:
+Security group of EC2 modified to open port 8080 as used 8080 as the local port which is forwarding on port 80 on the container
 
-1. read instructions / specifications and make a **public fork or clone** of this repository on **GitHub**
-2. **containerize** this application with **Docker**
-3. be sure to set the necessary **environment variables** referenced in app.py
-4. commit and include the completed **Dockerfile** in your repository, as well as any other related files
-5. deploy the wrapped application to **AWS**, in any way you choose
-6. create and commit a file in your repository named **ip.txt**, which stores *only* the **public IPv4 address** of your instance of the application on the first line, so that we may evaluate the submission quickly with the command **curl $(cat ip.txt)**.
-7. **Email / respond with your solution**, which will be:
-   * the URL of your GitHub repository, including all required files mentioned above
+Application url as the container is running: http://3.16.166.207:8080/
+
+Docker commands were
+
+docker build -t myapppython .
+docker  run -t -i -d --env MY_NAME=Abhinav -p 8080:80 myapppython
